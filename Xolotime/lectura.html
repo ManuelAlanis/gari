@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Cholotimes</title>
+	<style>
+	* body{
+		background-color: gray;
+	}
+	.caja{
+		background: white;
+		height: 100px;
+		width: 350px;
+		margin: 10px;
+	}
+	</style>
+    <script type="text/javascript">
+var partidos= {
+    		"partido0" : 
+    		{
+            	"descripcion":"este es el priner partido1",
+                "contrincante":"chivas",
+                "imagen":"",
+                "fecha":""    
+            },
+            "partido1":
+            {
+            	"descripcion":"",
+                "contrincante":"america",
+                "imagen":"",
+                "fecha":""
+            },
+            "partido2":
+            {
+            	"descripcion":"",
+                "contrincante":"toluca",
+                "imagen":"",
+                "fecha":""
+            }
+          }
+
+	function loadcuerpo() 
+	{
+		document.getElementById('enemigo0').innerHTML="Xolos contra "+partidos.partido0.contrincante;
+		document.getElementById('enemigo1').innerHTML="Xolos contra "+partidos.partido1.contrincante;
+		document.getElementById('enemigo2').innerHTML="Xolos contra "+partidos.partido2.contrincante;
+	}
+
+    </script>
+	</head>
+<body onload="loadcuerpo();">
+	<div class="caja">
+	<div id="enemigo0"></div>
+	</div>
+
+	<div class="caja">
+	<div id="enemigo1"></div>
+	</div>
+
+	<div class="caja">
+	<div id="enemigo2"></div>
+	</div>
+
+</body>
+</html>

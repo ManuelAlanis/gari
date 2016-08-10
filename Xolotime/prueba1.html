@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Temporizador prueba 1</title>
+	<link href="sticky-footer.css" rel="stylesheet">
+<!-- CONTADOR -->
+	<script LANGUAGE="JavaScript">
+		function getTime(){ //Funcion para obtener tiempo
+		actual = new Date();	//Fecha actual
+var partidos= 
+{
+        0: 
+        {
+        	"descripcion":"amistoso",
+            "contrincante":"chivas",
+            "imagen":"",
+            "fecha":"Jan 28 2015 07:00:00"    
+        },
+        1:
+        {
+        	"descripcion":"amistoso",
+            "contrincante":"america",
+            "imagen":"",
+            "fecha":"Jan 29 2015 07:00:00"
+        },
+        2:
+        {
+            "descripcion":"amistoso",
+            "contrincante":"toluca",
+            "imagen":"",
+            "fecha":"Feb 02 2015 07:00:00"
+        }
+}
+		var i= 0
+        var flag = true
+        do{
+            fecha = new Date(partidos[i].fecha); //Segunda fecha
+            if (fecha < actual)
+            {
+                i=i+1
+            }
+            else
+            {
+                flag=false
+            }
+        }while(flag)
+
+            fecha = new Date(partidos[i].fecha);
+		dias = (fecha - actual) / 1000 / 60 / 60 / 24; //Para obtener los dias ala fecha se le resta la actual y se divide entre 1000, 60, 60 y 24
+		diasRedond = Math.floor(dias); //Se redondea para obtener una sola cifra de dias
+		horas = (fecha - actual) / 1000 / 60 / 60 - (24 * diasRedond); //Se hace la resta de la fecha deseada menos hoy, se divide entre 1000, 60, 60 y se le restan las horas de los dias ya obtenidos.
+		horasRedond = Math.floor(horas); //Se redondea
+		minutos = (fecha - actual) / 1000 /60 - (24 * 60 * diasRedond) - (60 * horasRedond); //La misma resta, solo que ahora se le restan las horas sobrantes
+		minutosRedond = Math.floor(minutos); //se redondea
+		segundos = (fecha - actual) / 1000 - (24 * 60 * 60 * diasRedond) - (60 * 60 * horasRedond) - (60 * minutosRedond); //La misma resta, se divide entre 1000 y se le restan los dias, horas y minutos
+		segundosRedond = Math.round(segundos); //Se redondea
+		//VARIABLES para nombrar, no son necesarias, pero pueden servir
+		sec = (segundosRedond == 1) ? " segundo " : " segundos"; 
+		//Si solo es un segundo, sec=segundo, si no, segundos. Lo mismo para todos los casos
+		min = (minutosRedond == 1) ? " minuto, " : " minutos, ";
+		hr = (horasRedond == 1) ? " hora, " : " horas, ";
+		dy = (diasRedond == 1)  ? " d&iacute;a, " : " d&iacute;as, "
+		document.getElementById("counter").innerHTML = "Faltan " + diasRedond  + dy + horasRedond + hr + minutosRedond + min + segundosRedond + sec + " para el momento";//innerHTML para pegar todo esto en el html con el ID "counter"
+		newtiempo = window.setTimeout("getTime();", 1000); //Volver a ejecutar
+		}
+	</script>
+<!-- CONTADOR -->
+</head>
+<body>
+	<body onLoad="getTime()">
+	<p id="counter"></p>
+</body>
+</html>
